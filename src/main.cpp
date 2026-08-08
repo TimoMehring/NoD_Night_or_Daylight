@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "graphics.h"
 
 int main(void)
 {
@@ -7,7 +8,9 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "NoD");
 
-    SetTargetFPS(60);              
+    SetTargetFPS(60);      
+    
+    //Texture2D texture = LoadGraphics();
 
     while (!WindowShouldClose())    
     {
@@ -16,7 +19,7 @@ int main(void)
 
             ClearBackground(GREEN);
 
-            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+            DrawText("Test", 190, 200, 20, LIGHTGRAY);
 
         EndDrawing();
         
