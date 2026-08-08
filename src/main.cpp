@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "graphics.h"
+#include "logic.h"
 
 int main(void)
 {
@@ -9,23 +10,23 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "NoD");
 
     SetTargetFPS(60);      
-    
-    //Texture2D texture = LoadGraphics();
+    Daytime currentDayTime =  Daytime::Morning;
+    Texture2D dayTime = LoadGraphics(currentDayTime);
 
     while (!WindowShouldClose())    
     {
 
         BeginDrawing();
 
-            ClearBackground(GREEN);
-
-            DrawText("Test", 190, 200, 20, LIGHTGRAY);
+        ClearBackground(GREEN);
+        DrawGraphics(dayTime);
 
         EndDrawing();
         
     }
-
-    CloseWindow();        
+    UnloadGraphics(dayTime);
+    CloseWindow();  
+          
 
     return 0;
 }

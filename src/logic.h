@@ -6,3 +6,4 @@ enum class Daytime {
     Daylight,
     Night
 };
+
