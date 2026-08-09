@@ -17,10 +17,8 @@ int main(void)
     Graphics graphics = LoadGraphics();
 
     Audio audio = LoadAudio();
-    //PlayMusicStream(audio.birds); //Simple Audio Test
 
     while (!WindowShouldClose())    {  
-        //UpdateMusicStream(audio.birds); // Implemented in PlayAudio()
         int currentHour = GetCurrentHour();
         int currentMinute = GetCurrentMinute();
         currentDayTime = CheckDayTime(currentHour); 

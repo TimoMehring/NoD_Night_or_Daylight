@@ -15,18 +15,15 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime)
 
     if (currentDayTime == Daytime::Morning)
     {
-        DrawTextureEx(graphics.morning,{0.0f, 0.0f},0.0f,8.0f,WHITE); // Later for all 3 (Morning,Daylight,Night) 
-        //DrawText(TextFormat("%02d:%02d", currentHour, currentMinute), 310, 80, 60, WHITE);
+        DrawTextureEx(graphics.morning,{0.0f, 0.0f},0.0f,8.0f,WHITE); 
     }
     else if (currentDayTime == Daytime::Daylight)
     {
         DrawTextureEx(graphics.daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
-        //DrawText(TextFormat("%02d:%02d", currentHour, currentMinute), 310, 80, 60, WHITE);
     }
     else if (currentDayTime == Daytime::Night)
     {   
         DrawTextureEx(graphics.night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
-        //DrawText(TextFormat("%02d:%02d", currentHour, currentMinute), 310, 80, 60, WHITE);
     }
 }
 

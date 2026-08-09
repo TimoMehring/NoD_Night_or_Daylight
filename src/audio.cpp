@@ -3,7 +3,7 @@
 
 Audio LoadAudio(){
     Audio audio;
-    audio.birds = LoadMusicStream("assets/birds.wav");
+    audio.birds = LoadMusicStream("assets/birdswater.wav");
     audio.nightwater = LoadMusicStream("assets/nightwater.wav");
     return audio;
 }
