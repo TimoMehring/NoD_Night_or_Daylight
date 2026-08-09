@@ -24,3 +24,8 @@ void PlayAudio(Audio& audio, Daytime currentDayTime){
 
     }
 }
+
+void UnlaodAudio(Audio& audio){
+    UnloadMusicStream(audio.birds);
+    UnloadMusicStream(audio.nightwater);
+}

@@ -9,3 +9,4 @@ struct Audio{
 
 Audio LoadAudio();
 void PlayAudio(Audio& audio, Daytime currentDayTime);
+void UnlaodAudio(Audio& audio);

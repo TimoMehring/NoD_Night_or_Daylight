@@ -34,7 +34,10 @@ int main(void)
         EndDrawing();
         
     }
+    UnlaodAudio(audio);
     UnloadGraphics(graphics);
+
+    CloseAudioDevice();
     CloseWindow();  
           
 
