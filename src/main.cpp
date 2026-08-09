@@ -18,14 +18,13 @@ int main(void)
         int currentHour = GetCurrentHour();
         int currentMinute = GetCurrentMinute();
         currentDayTime = CheckDayTime(currentHour); 
-        //currentDayTime = Daytime::Daylight; //for testings
+        //currentDayTime = Daytime::Night; //for testings
 
         BeginDrawing();
 
         ClearBackground(GREEN);
-        DrawGraphics(graphics, currentDayTime, currentHour, currentMinute);
-
-        //DrawText(TextFormat("Hour: %d", currentHour),100,100,30,WHITE);
+        DrawGraphics(graphics, currentDayTime);
+        DrawClock(currentHour, currentMinute);
 
         EndDrawing();
         
