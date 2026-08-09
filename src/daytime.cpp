@@ -9,3 +9,15 @@ int GetCurrentHour(){
     return localTime->tm_hour;
 
 }
+
+Daytime CheckDayTime(int currentHour){
+    if(currentHour >= 6 && currentHour < 10){
+        return Daytime::Morning;
+    }
+    else if(currentHour >= 10 && currentHour < 22){
+        return Daytime::Daylight;
+    }
+    else{
+        return Daytime::Night;
+    }
+}

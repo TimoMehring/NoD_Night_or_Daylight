@@ -1,6 +1,5 @@
 #include "raylib.h"
 #include "graphics.h"
-#include "logic.h"
 #include "daytime.h"
 #include "ctime"
 
@@ -13,23 +12,23 @@ int main(void)
 
     SetTargetFPS(60);      
     Daytime currentDayTime =  Daytime::Morning;
-    Texture2D dayTime = LoadGraphics(currentDayTime);
+    Graphics graphics = LoadGraphics();
 
-    while (!WindowShouldClose())    
-    {
+    while (!WindowShouldClose())    {  
         int currentHour = GetCurrentHour();
+        currentDayTime = CheckDayTime(currentHour); 
 
         BeginDrawing();
 
         ClearBackground(GREEN);
-        DrawGraphics(dayTime);
+        DrawGraphics(graphics, currentDayTime);
 
         DrawText(TextFormat("Hour: %d", currentHour),100,100,30,WHITE);
 
         EndDrawing();
         
     }
-    UnloadGraphics(dayTime);
+    UnloadGraphics(graphics);
     CloseWindow();  
           
 

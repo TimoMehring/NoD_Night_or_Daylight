@@ -1,7 +1,14 @@
 #pragma once
 #include "raylib.h"
-#include "logic.h"
+#include "daytime.h"
 
-Texture2D LoadGraphics(Daytime currentDayTime);
-void DrawGraphics(Texture2D dayTime);
-void UnloadGraphics(Texture2D dayTime);
+struct Graphics
+{
+    Texture2D morning;
+    Texture2D daylight;
+    Texture2D night;
+};
+
+Graphics LoadGraphics();
+void DrawGraphics(Graphics graphics, Daytime currentDayTime);
+void UnloadGraphics(Graphics graphics);

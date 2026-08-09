@@ -1,24 +1,35 @@
 #include "graphics.h"
 #include "raylib.h"
 
-Texture2D LoadGraphics(Daytime currentDayTime){
-    Texture2D daytime;
-    if(currentDayTime == Daytime::Morning){
-        daytime = LoadTexture("assets/morning.png");
-    }else if(currentDayTime == Daytime::Daylight){
-        daytime = LoadTexture("assets/daylight.png");
-    }else if(currentDayTime == Daytime::Night){
-        daytime = LoadTexture("assets/night.png");
-    }
-    
-    return daytime;
+Graphics LoadGraphics(){
+    Graphics graphics;
+    graphics.morning = LoadTexture("assets/morning.png");
+    graphics.daylight = LoadTexture("assets/daylight.png");
+    graphics.night = LoadTexture("assets/night.png");
+    return graphics; 
 }
 
-void DrawGraphics(Texture2D dayTime){
+void DrawGraphics(Graphics graphics, Daytime currentDayTime)
+{
     ClearBackground(GRAY);
-    DrawTexture(dayTime, 0, 0, WHITE);
+
+    if (currentDayTime == Daytime::Morning)
+    {
+        DrawTexture(graphics.morning, 0, 0, WHITE);
+    }
+    else if (currentDayTime == Daytime::Daylight)
+    {
+        DrawTexture(graphics.daylight, 0, 0, WHITE);
+    }
+    else if (currentDayTime == Daytime::Night)
+    {
+        DrawTexture(graphics.night, 0, 0, WHITE);
+    }
 }
 
-void UnloadGraphics(Texture2D dayTime){
-    UnloadTexture(dayTime);
+void UnloadGraphics(Graphics graphics)
+{
+    UnloadTexture(graphics.morning);
+    UnloadTexture(graphics.daylight);
+    UnloadTexture(graphics.night);
 }
