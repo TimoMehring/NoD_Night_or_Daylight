@@ -4,6 +4,7 @@
 
 struct Audio{
     Music birds;
+    Music nightwater;
 };
 
 Audio LoadAudio();
