@@ -12,6 +12,9 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "NoD");
     InitAudioDevice();
 
+    Image icon = LoadImage("assets/nod_icon_exe.png");
+    SetWindowIcon(icon);
+
     SetTargetFPS(60);      
     Daytime currentDayTime =  Daytime::Morning;
     Graphics graphics = LoadGraphics();
@@ -34,6 +37,7 @@ int main(void)
         EndDrawing();
         
     }
+    UnloadImage(icon);
     UnlaodAudio(audio);
     UnloadGraphics(graphics);
 
