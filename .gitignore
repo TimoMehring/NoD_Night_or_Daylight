@@ -1,5 +1,6 @@
 # Kompilierte Dateien und Build-Ordner ignorieren
 build/
+release/
 *.exe
 *.o
 
