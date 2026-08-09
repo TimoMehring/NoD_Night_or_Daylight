@@ -10,5 +10,5 @@ struct Graphics
 };
 
 Graphics LoadGraphics();
-void DrawGraphics(Graphics graphics, Daytime currentDayTime);
+void DrawGraphics(Graphics graphics, Daytime currentDayTime, int currentHour, int currentMinute);
 void UnloadGraphics(Graphics graphics);

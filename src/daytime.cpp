@@ -10,6 +10,12 @@ int GetCurrentHour(){
 
 }
 
+int GetCurrentMinute(){
+    std::time_t now = std::time(nullptr);
+    std::tm* localTime = std::localtime(&now);
+    return localTime->tm_min;
+}
+
 Daytime CheckDayTime(int currentHour){
     if(currentHour >= 6 && currentHour < 10){
         return Daytime::Morning;

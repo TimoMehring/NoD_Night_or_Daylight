@@ -9,13 +9,15 @@ Graphics LoadGraphics(){
     return graphics; 
 }
 
-void DrawGraphics(Graphics graphics, Daytime currentDayTime)
+void DrawGraphics(Graphics graphics, Daytime currentDayTime, int currentHour, int currentMinute)
 {
     ClearBackground(GRAY);
 
     if (currentDayTime == Daytime::Morning)
     {
         DrawTexture(graphics.morning, 0, 0, WHITE);
+        //DrawTextureEx(graphics.morning,{0.0f, 0.0f},0.0f,8.0f,WHITE); // Later for all 3 (Morning,Daylight,Night) 
+        DrawText(TextFormat("%02d:%02d", currentHour, currentMinute), 300, 100, 30, WHITE);
     }
     else if (currentDayTime == Daytime::Daylight)
     {

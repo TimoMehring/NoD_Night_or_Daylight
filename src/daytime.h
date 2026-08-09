@@ -10,3 +10,4 @@ enum class Daytime {
 
 Daytime CheckDayTime(int currentHour);
 int GetCurrentHour();
+int GetCurrentMinute();

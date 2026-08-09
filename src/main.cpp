@@ -6,7 +6,7 @@
 int main(void)
 {   
     const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenHeight = 400;
 
     InitWindow(screenWidth, screenHeight, "NoD");
 
@@ -16,14 +16,15 @@ int main(void)
 
     while (!WindowShouldClose())    {  
         int currentHour = GetCurrentHour();
+        int currentMinute = GetCurrentMinute();
         currentDayTime = CheckDayTime(currentHour); 
 
         BeginDrawing();
 
         ClearBackground(GREEN);
-        DrawGraphics(graphics, currentDayTime);
+        DrawGraphics(graphics, currentDayTime, currentHour, currentMinute);
 
-        DrawText(TextFormat("Hour: %d", currentHour),100,100,30,WHITE);
+        //DrawText(TextFormat("Hour: %d", currentHour),100,100,30,WHITE);
 
         EndDrawing();
         
