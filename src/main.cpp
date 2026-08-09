@@ -18,7 +18,7 @@ int main(void)
         int currentHour = GetCurrentHour();
         int currentMinute = GetCurrentMinute();
         currentDayTime = CheckDayTime(currentHour); 
-        //currentDayTime = Daytime::Night; for testings
+        //currentDayTime = Daytime::Daylight; //for testings
 
         BeginDrawing();
 
