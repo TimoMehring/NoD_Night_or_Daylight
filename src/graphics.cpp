@@ -6,20 +6,33 @@ Graphics LoadGraphics(){
     graphics.morning = LoadTexture("assets/morning.png");
     graphics.daylight = LoadTexture("assets/daylight.png");
     graphics.night = LoadTexture("assets/night.png");
+    graphics.forrest_morning = LoadTexture("assets/forrest_morning.png");
+    graphics.forrest_daylight = LoadTexture("assets/forrest_daylight.png");
+    graphics.forrest_night = LoadTexture("assets/forrest_night.png");
     return graphics; 
 }
 
-void DrawGraphics(Graphics graphics, Daytime currentDayTime)
+void DrawGraphics(Graphics graphics, Daytime currentDayTime,Theme& currentTheme)
 {
     ClearBackground(GRAY);
 
     if (currentDayTime == Daytime::Morning)
     {
-        DrawTextureEx(graphics.morning,{0.0f, 0.0f},0.0f,8.0f,WHITE); 
+        if(currentTheme == Theme::Beach){
+            DrawTextureEx(graphics.morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
+        else if(currentTheme == Theme::Forrest){
+            DrawTextureEx(graphics.forrest_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
     }
     else if (currentDayTime == Daytime::Daylight)
     {
-        DrawTextureEx(graphics.daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        if(currentTheme == Theme::Beach){
+            DrawTextureEx(graphics.daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
+        else if(currentTheme == Theme::Forrest){
+            DrawTextureEx(graphics.forrest_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
     }
     else if (currentDayTime == Daytime::Night)
     {   
@@ -66,4 +79,7 @@ void UnloadGraphics(Graphics graphics)
     UnloadTexture(graphics.morning);
     UnloadTexture(graphics.daylight);
     UnloadTexture(graphics.night);
+    UnloadTexture(graphics.forrest_morning);
+    UnloadTexture(graphics.forrest_daylight);
+    UnloadTexture(graphics.forrest_night);
 }

@@ -3,6 +3,7 @@
 #include "daytime.h"
 #include "audio.h"
 #include "ctime"
+#include "theme.h"
 
 int main(void)
 {   
@@ -18,6 +19,7 @@ int main(void)
     SetTargetFPS(60);      
     Daytime currentDayTime =  Daytime::Morning;
     Graphics graphics = LoadGraphics();
+    Theme currentTheme = Theme::Forrest;
 
     Audio audio = LoadAudio();
 
@@ -25,13 +27,13 @@ int main(void)
         int currentHour = GetCurrentHour();
         int currentMinute = GetCurrentMinute();
         currentDayTime = CheckDayTime(currentHour); 
-        //currentDayTime = Daytime::Night; //for testings
+        //currentDayTime = Daytime::Morning; //for testings
 
         BeginDrawing();
 
         ClearBackground(GREEN);
         PlayAudio(audio,currentDayTime);
-        DrawGraphics(graphics, currentDayTime);
+        DrawGraphics(graphics, currentDayTime,currentTheme);
         DrawClock(currentHour, currentMinute);
 
         EndDrawing();
