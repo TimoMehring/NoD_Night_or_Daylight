@@ -3,6 +3,7 @@
 
 Graphics LoadGraphics(){
     Graphics graphics;
+    graphics.startscreen = LoadTexture("assets/startscreen.png");
     graphics.morning = LoadTexture("assets/morning.png");
     graphics.daylight = LoadTexture("assets/daylight.png");
     graphics.night = LoadTexture("assets/night.png");
@@ -12,25 +13,29 @@ Graphics LoadGraphics(){
     return graphics; 
 }
 
-void DrawGraphics(Graphics graphics, Daytime currentDayTime,Theme& currentTheme)
+void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
 {
     ClearBackground(GRAY);
 
+    if(currentState == State::Startscreen){
+        DrawTextureEx(graphics.startscreen,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+    }
+
     if (currentDayTime == Daytime::Morning)
     {
-        if(currentTheme == Theme::Beach){
+        if(currentState == State::ThemeBeach){
             DrawTextureEx(graphics.morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
-        else if(currentTheme == Theme::Forrest){
+        else if(currentState == State::ThemeForrest){
             DrawTextureEx(graphics.forrest_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
     }
     else if (currentDayTime == Daytime::Daylight)
     {
-        if(currentTheme == Theme::Beach){
+        if(currentState == State::ThemeBeach){
             DrawTextureEx(graphics.daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
-        else if(currentTheme == Theme::Forrest){
+        else if(currentState == State::ThemeForrest){
             DrawTextureEx(graphics.forrest_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
     }
@@ -76,6 +81,7 @@ void DrawClock(int currentHour, int currentMinute)
 
 void UnloadGraphics(Graphics graphics)
 {
+    UnloadTexture(graphics.startscreen);
     UnloadTexture(graphics.morning);
     UnloadTexture(graphics.daylight);
     UnloadTexture(graphics.night);

@@ -2,10 +2,11 @@
 #include "raylib.h"
 #include "daytime.h"
 #include <cstdio>
-#include "theme.h"
+#include "state.h"
 
 struct Graphics
 {
+    Texture2D startscreen;
     Texture2D morning;
     Texture2D daylight;
     Texture2D night;
@@ -16,6 +17,6 @@ struct Graphics
 };
 
 Graphics LoadGraphics();
-void DrawGraphics(Graphics graphics, Daytime currentDayTime, Theme& currentTheme);
+void DrawGraphics(Graphics graphics, Daytime currentDayTime, State& currentState);
 void UnloadGraphics(Graphics graphics);
 void DrawClock(int currentHour, int currentMinute);
