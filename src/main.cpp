@@ -23,6 +23,9 @@ int main(void)
     Audio audio = LoadAudio();
 
     while (!WindowShouldClose())    {  
+/*         if((currentState == State::ThemeBeach) || (currentState == State::ThemeForrest)){
+            
+        } */
         int currentHour = GetCurrentHour();
         int currentMinute = GetCurrentMinute();
         currentDayTime = CheckDayTime(currentHour); 
@@ -43,8 +46,15 @@ int main(void)
         ClearBackground(GREEN);
         PlayAudio(audio,currentDayTime);
         DrawGraphics(graphics, currentDayTime,currentState);
-        DrawClock(currentHour, currentMinute);
+        if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
+            DrawClock(currentHour, currentMinute);
+        }
+        //DrawClock(currentHour, currentMinute);
         //DrawHomeButton(graphics);
+
+        if(currentState == State::ThemeChoice){
+            DrawThemeChoiceExtras(graphics);
+        }
         if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
             DrawHomeButton(graphics);
         }   

@@ -12,6 +12,9 @@ Graphics LoadGraphics(){
     graphics.forrest_daylight = LoadTexture("assets/forrest_daylight.png");
     graphics.forrest_night = LoadTexture("assets/forrest_night.png");
     graphics.homeButton = LoadTexture("assets/homebutton.png");
+    
+    graphics.icon_beach = LoadTexture("assets/icon_beach.png");
+    graphics.icon_forrest = LoadTexture("assets/icon_forrest.png");
     return graphics; 
 }
 
@@ -94,7 +97,6 @@ void DrawClock(int currentHour, int currentMinute)
 }
 
 void DrawHomeButton(Graphics graphics){
-    //Rectangle HomeButton = {0.0, 0.0, graphics.homeButton.width, graphics.homeButton.height};
     DrawTextureEx(graphics.homeButton, {20.0f,10.0f},0.0f,5.0f,WHITE);
 }
 
@@ -109,6 +111,8 @@ void UnloadGraphics(Graphics& graphics)
     UnloadTexture(graphics.forrest_daylight);
     UnloadTexture(graphics.forrest_night);
     UnloadTexture(graphics.homeButton);
+    UnloadTexture(graphics.icon_beach);
+    UnloadTexture(graphics.icon_forrest);
 }
 
 void UpdateHomeButton(Graphics graphics,State& currentState){
@@ -131,5 +135,13 @@ void UpdateStartscreen(State& currentState){
 }
 
 void UpdateThemeChoice(Graphics graphics, State& currentState){
+    
 
+}
+
+void DrawThemeChoiceExtras(Graphics graphics){
+    DrawTextureEx(graphics.icon_beach,{20.0f,100.0f},0.0,7.0,WHITE);
+    DrawTextureEx(graphics.icon_forrest,{281.0f,100.0f},0.0f,7.0,WHITE);
+    // Sample Later Different IconTheme
+    DrawTextureEx(graphics.icon_beach,{542.0f,100.0f},0.0,7.0,WHITE);
 }

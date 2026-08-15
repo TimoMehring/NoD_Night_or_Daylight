@@ -18,7 +18,9 @@ struct Graphics
     Texture2D forrest_night;
 
     Texture2D homeButton;
-    //Rectangle HomeButton;
+
+    Texture2D icon_beach;
+    Texture2D icon_forrest;
 };
 
 Graphics LoadGraphics();
@@ -29,3 +31,4 @@ void DrawHomeButton(Graphics graphics);
 void UpdateHomeButton(Graphics graphics,State& currentState);
 void UpdateStartscreen(State& currentState);
 void UpdateThemeChoice(Graphics graphics, State& currentState);
+void DrawThemeChoiceExtras(Graphics graphics);
