@@ -37,7 +37,7 @@ int main(void)
         else if(currentState == State::ThemeChoice){
             UpdateThemeChoice(graphics, currentState);
         }
-        else if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
+        else if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
             UpdateHomeButton(graphics,currentState);
         }
         //currentDayTime = Daytime::Morning; //for testings
@@ -47,7 +47,7 @@ int main(void)
         ClearBackground(GREEN);
         PlayAudio(audio,currentDayTime);
         DrawGraphics(graphics, currentDayTime,currentState);
-        if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
+        if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
             DrawClock(currentHour, currentMinute);
         }
         //DrawClock(currentHour, currentMinute);
@@ -56,7 +56,7 @@ int main(void)
         if(currentState == State::ThemeChoice){
             DrawThemeChoiceExtras(graphics);
         }
-        if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
+        if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
             DrawHomeButton(graphics);
         }   
 

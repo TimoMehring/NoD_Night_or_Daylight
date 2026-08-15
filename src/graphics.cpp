@@ -11,6 +11,10 @@ Graphics LoadGraphics(){
     graphics.forrest_morning = LoadTexture("assets/forrest_morning.png");
     graphics.forrest_daylight = LoadTexture("assets/forrest_daylight.png");
     graphics.forrest_night = LoadTexture("assets/forrest_night.png");
+    graphics.vulcan_daylight = LoadTexture("assets/vulcan_daylight.png");
+    graphics.icon_vulcan = LoadTexture("assets/icon_vulcan.png");
+
+
     graphics.homeButton = LoadTexture("assets/homebutton.png");
     
     graphics.icon_beach = LoadTexture("assets/icon_beach.png");
@@ -40,6 +44,7 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
         else if(currentState == State::ThemeForrest){
             DrawTextureEx(graphics.forrest_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
+
     }
     else if (currentDayTime == Daytime::Daylight)
     {
@@ -48,6 +53,9 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
         }
         else if(currentState == State::ThemeForrest){
             DrawTextureEx(graphics.forrest_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
+        else if(currentState == State::ThemeVulcan){
+            DrawTextureEx(graphics.vulcan_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
     }
     else if (currentDayTime == Daytime::Night)
@@ -110,9 +118,11 @@ void UnloadGraphics(Graphics& graphics)
     UnloadTexture(graphics.forrest_morning);
     UnloadTexture(graphics.forrest_daylight);
     UnloadTexture(graphics.forrest_night);
+    UnloadTexture(graphics.vulcan_daylight);
     UnloadTexture(graphics.homeButton);
     UnloadTexture(graphics.icon_beach);
     UnloadTexture(graphics.icon_forrest);
+    UnloadTexture(graphics.icon_vulcan);
 }
 
 void UpdateHomeButton(Graphics graphics,State& currentState){
@@ -137,21 +147,18 @@ void UpdateStartscreen(State& currentState){
 void UpdateThemeChoice(Graphics graphics, State& currentState){
     Rectangle beachButton = {20.0, 100.0, static_cast<float>(graphics.icon_beach.width)*7,static_cast<float>(graphics.icon_beach.height)*7};
     Rectangle forrestButton = {281.0, 100.0, static_cast<float>(graphics.icon_forrest.width)*7,static_cast<float>(graphics.icon_forrest.height)*7};
-    // Sample Graphics changed later
-    //Rectangle vulcanButton = {542.0, 100.0, static_cast<float>(graphics.icon_forrest.width)*7,static_cast<float>(graphics.icon_forrest.height)*7};
+    Rectangle vulcanButton = {542.0, 100.0, static_cast<float>(graphics.icon_vulcan.width)*7,static_cast<float>(graphics.icon_vulcan.height)*7};
     Vector2 mousePosition = GetMousePosition();
 
     if(CheckCollisionPointRec(mousePosition,beachButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
         currentState = State::ThemeBeach;
-        //return;
     }
     else if(CheckCollisionPointRec(mousePosition,forrestButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
         currentState = State::ThemeForrest;
     }
-    // Sample Graphics change later
-/*     else if(CheckCollisionPointRec(mousePosition,beachButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
-        currentState = State::ThemeForrest;
-    } */
+    else if(CheckCollisionPointRec(mousePosition,vulcanButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        currentState = State::ThemeVulcan;
+    }
 
 
 }
@@ -159,6 +166,5 @@ void UpdateThemeChoice(Graphics graphics, State& currentState){
 void DrawThemeChoiceExtras(Graphics graphics){
     DrawTextureEx(graphics.icon_beach,{20.0f,100.0f},0.0,7.0,WHITE);
     DrawTextureEx(graphics.icon_forrest,{281.0f,100.0f},0.0f,7.0,WHITE);
-    // Sample Later Different IconTheme
-    DrawTextureEx(graphics.icon_beach,{542.0f,100.0f},0.0,7.0,WHITE);
+    DrawTextureEx(graphics.icon_vulcan,{542.0f,100.0f},0.0,7.0,WHITE);
 }

@@ -17,10 +17,15 @@ struct Graphics
     Texture2D forrest_daylight;
     Texture2D forrest_night;
 
+    Texture2D vulcan_morning;
+    Texture2D vulcan_daylight;
+    Texture2D vulcan_night;
+
     Texture2D homeButton;
 
     Texture2D icon_beach;
     Texture2D icon_forrest;
+    Texture2D icon_vulcan;
 };
 
 Graphics LoadGraphics();

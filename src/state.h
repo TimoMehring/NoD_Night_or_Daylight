@@ -5,7 +5,8 @@ enum class State{
     Startscreen,
     ThemeChoice,
     ThemeBeach,
-    ThemeForrest
+    ThemeForrest,
+    ThemeVulcan
 };
 
 void UpdateScreen(State& currentState);
