@@ -135,7 +135,24 @@ void UpdateStartscreen(State& currentState){
 }
 
 void UpdateThemeChoice(Graphics graphics, State& currentState){
-    
+    Rectangle beachButton = {20.0, 100.0, static_cast<float>(graphics.icon_beach.width)*7,static_cast<float>(graphics.icon_beach.height)*7};
+    Rectangle forrestButton = {281.0, 100.0, static_cast<float>(graphics.icon_forrest.width)*7,static_cast<float>(graphics.icon_forrest.height)*7};
+    // Sample Graphics changed later
+    //Rectangle vulcanButton = {542.0, 100.0, static_cast<float>(graphics.icon_forrest.width)*7,static_cast<float>(graphics.icon_forrest.height)*7};
+    Vector2 mousePosition = GetMousePosition();
+
+    if(CheckCollisionPointRec(mousePosition,beachButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        currentState = State::ThemeBeach;
+        //return;
+    }
+    else if(CheckCollisionPointRec(mousePosition,forrestButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        currentState = State::ThemeForrest;
+    }
+    // Sample Graphics change later
+/*     else if(CheckCollisionPointRec(mousePosition,beachButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        currentState = State::ThemeForrest;
+    } */
+
 
 }
 

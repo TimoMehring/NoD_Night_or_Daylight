@@ -34,9 +34,10 @@ int main(void)
         if(currentState == State::Startscreen){
             UpdateStartscreen(currentState);
         }
-        
-        
-        if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
+        else if(currentState == State::ThemeChoice){
+            UpdateThemeChoice(graphics, currentState);
+        }
+        else if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
             UpdateHomeButton(graphics,currentState);
         }
         //currentDayTime = Daytime::Morning; //for testings
