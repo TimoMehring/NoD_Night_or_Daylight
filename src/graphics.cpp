@@ -10,15 +10,17 @@ Graphics LoadGraphics(){
     graphics.forrest_morning = LoadTexture("assets/forrest_morning.png");
     graphics.forrest_daylight = LoadTexture("assets/forrest_daylight.png");
     graphics.forrest_night = LoadTexture("assets/forrest_night.png");
+    graphics.homeButton = LoadTexture("assets/homebutton.png");
     return graphics; 
 }
 
 void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
 {
-    ClearBackground(GRAY);
+    //ClearBackground(GRAY);
 
     if(currentState == State::Startscreen){
         DrawTextureEx(graphics.startscreen,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        return;
     }
 
     if (currentDayTime == Daytime::Morning)
@@ -40,8 +42,14 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
         }
     }
     else if (currentDayTime == Daytime::Night)
-    {   
-        DrawTextureEx(graphics.night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+    {  
+        if (currentState == State::ThemeBeach){
+            DrawTextureEx(graphics.night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
+        else if(currentState == State::ThemeForrest){
+            DrawTextureEx(graphics.forrest_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
+        
     }
 }
 
@@ -79,7 +87,12 @@ void DrawClock(int currentHour, int currentMinute)
     DrawText(minuteText, startX + 10 + hourWidth + colonWidth, startY, fontSize, WHITE);
 }
 
-void UnloadGraphics(Graphics graphics)
+void DrawHomeButton(Graphics graphics){
+    //Rectangle HomeButton = {0.0, 0.0, graphics.homeButton.width, graphics.homeButton.height};
+    DrawTextureEx(graphics.homeButton, {20.0f,10.0f},0.0f,5.0f,WHITE);
+}
+
+void UnloadGraphics(Graphics& graphics)
 {
     UnloadTexture(graphics.startscreen);
     UnloadTexture(graphics.morning);
@@ -88,4 +101,18 @@ void UnloadGraphics(Graphics graphics)
     UnloadTexture(graphics.forrest_morning);
     UnloadTexture(graphics.forrest_daylight);
     UnloadTexture(graphics.forrest_night);
+    UnloadTexture(graphics.homeButton);
+}
+
+void UpdateHomeButton(Graphics graphics,State& currentState){
+    Rectangle homeButton = {20.0, 10.0, static_cast<float>(graphics.homeButton.width)*5,static_cast<float>(graphics.homeButton.height)*5};
+    
+    Vector2 mousePosition = GetMousePosition();
+    
+    if(CheckCollisionPointRec(mousePosition,homeButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        
+        currentState = State::Startscreen;
+
+        
+    }
 }

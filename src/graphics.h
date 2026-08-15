@@ -14,9 +14,14 @@ struct Graphics
     Texture2D forrest_morning;
     Texture2D forrest_daylight;
     Texture2D forrest_night;
+
+    Texture2D homeButton;
+    //Rectangle HomeButton;
 };
 
 Graphics LoadGraphics();
 void DrawGraphics(Graphics graphics, Daytime currentDayTime, State& currentState);
-void UnloadGraphics(Graphics graphics);
+void UnloadGraphics(Graphics& graphics);
 void DrawClock(int currentHour, int currentMinute);
+void DrawHomeButton(Graphics graphics);
+void UpdateHomeButton(Graphics graphics,State& currentState);

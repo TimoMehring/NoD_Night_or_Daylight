@@ -9,3 +9,4 @@ enum class State{
 };
 
 void UpdateScreen(State& currentState);
+/* void UpdateHomeButton(Graphics graphics,State& currentState); */
