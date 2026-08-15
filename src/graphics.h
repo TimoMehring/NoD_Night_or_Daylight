@@ -7,6 +7,8 @@
 struct Graphics
 {
     Texture2D startscreen;
+    Texture2D themechoice;
+
     Texture2D morning;
     Texture2D daylight;
     Texture2D night;
@@ -25,3 +27,5 @@ void UnloadGraphics(Graphics& graphics);
 void DrawClock(int currentHour, int currentMinute);
 void DrawHomeButton(Graphics graphics);
 void UpdateHomeButton(Graphics graphics,State& currentState);
+void UpdateStartscreen(State& currentState);
+void UpdateThemeChoice(Graphics graphics, State& currentState);

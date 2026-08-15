@@ -4,6 +4,7 @@
 Graphics LoadGraphics(){
     Graphics graphics;
     graphics.startscreen = LoadTexture("assets/startscreen.png");
+    graphics.themechoice = LoadTexture("assets/themechoice.png");
     graphics.morning = LoadTexture("assets/morning.png");
     graphics.daylight = LoadTexture("assets/daylight.png");
     graphics.night = LoadTexture("assets/night.png");
@@ -20,6 +21,11 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
 
     if(currentState == State::Startscreen){
         DrawTextureEx(graphics.startscreen,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        return;
+    }
+
+    if(currentState == State::ThemeChoice){
+        DrawTextureEx(graphics.themechoice,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         return;
     }
 
@@ -95,6 +101,7 @@ void DrawHomeButton(Graphics graphics){
 void UnloadGraphics(Graphics& graphics)
 {
     UnloadTexture(graphics.startscreen);
+    UnloadTexture(graphics.themechoice);
     UnloadTexture(graphics.morning);
     UnloadTexture(graphics.daylight);
     UnloadTexture(graphics.night);
@@ -115,4 +122,14 @@ void UpdateHomeButton(Graphics graphics,State& currentState){
 
         
     }
+}
+
+void UpdateStartscreen(State& currentState){
+    if(IsKeyPressed(KEY_ENTER) || IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+        currentState = State::ThemeChoice;
+    }
+}
+
+void UpdateThemeChoice(Graphics graphics, State& currentState){
+
 }

@@ -18,7 +18,7 @@ int main(void)
     SetTargetFPS(60);      
     Daytime currentDayTime =  Daytime::Night;
     Graphics graphics = LoadGraphics();
-    State currentState = State::ThemeForrest;
+    State currentState = State::Startscreen;
 
     Audio audio = LoadAudio();
 
@@ -27,12 +27,17 @@ int main(void)
         int currentMinute = GetCurrentMinute();
         currentDayTime = CheckDayTime(currentHour); 
         
+
+        if(currentState == State::Startscreen){
+            UpdateStartscreen(currentState);
+        }
         
-        if(currentState != State::Startscreen){
+        
+        if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
             UpdateHomeButton(graphics,currentState);
         }
         //currentDayTime = Daytime::Morning; //for testings
-        //currentState = State::ThemeBeach; // for testings
+        //currentState = State::ThemeChoice; // for testings
         BeginDrawing();
 
         ClearBackground(GREEN);
@@ -40,7 +45,7 @@ int main(void)
         DrawGraphics(graphics, currentDayTime,currentState);
         DrawClock(currentHour, currentMinute);
         //DrawHomeButton(graphics);
-        if(currentState != State::Startscreen){
+        if(currentState == State::ThemeBeach || currentState == State::ThemeForrest){
             DrawHomeButton(graphics);
         }   
 
