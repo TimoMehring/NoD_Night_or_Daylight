@@ -44,6 +44,10 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
         else if(currentState == State::ThemeForrest){
             DrawTextureEx(graphics.forrest_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
+        else if(currentState == State::ThemeVulcan){
+            // exchange daylight texture with morning texture later
+            DrawTextureEx(graphics.vulcan_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
 
     }
     else if (currentDayTime == Daytime::Daylight)
@@ -65,6 +69,10 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
         }
         else if(currentState == State::ThemeForrest){
             DrawTextureEx(graphics.forrest_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        }
+        else if(currentState == State::ThemeVulcan){
+            // exchange daylight texture with night texture
+            DrawTextureEx(graphics.vulcan_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         
     }
