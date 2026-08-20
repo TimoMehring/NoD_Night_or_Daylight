@@ -12,7 +12,9 @@ Graphics LoadGraphics(){
     graphics.forrest_morning = LoadTexture("assets/forrest_morning.png");
     graphics.forrest_daylight = LoadTexture("assets/forrest_daylight.png");
     graphics.forrest_night = LoadTexture("assets/forrest_night.png");
+    graphics.vulcan_morning = LoadTexture("assets/vulcan_morning.png");
     graphics.vulcan_daylight = LoadTexture("assets/vulcan_daylight.png");
+    graphics.vulcan_night = LoadTexture("assets/vulcan_night.png");
     graphics.icon_vulcan = LoadTexture("assets/icon_vulcan.png");
 
 
@@ -48,8 +50,7 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
             DrawTextureEx(graphics.forrest_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeVulcan){
-            // exchange daylight texture with morning texture later
-            DrawTextureEx(graphics.vulcan_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+            DrawTextureEx(graphics.vulcan_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
 
     }
@@ -74,8 +75,7 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
             DrawTextureEx(graphics.forrest_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeVulcan){
-            // exchange daylight texture with night texture
-            DrawTextureEx(graphics.vulcan_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+            DrawTextureEx(graphics.vulcan_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         
     }
@@ -97,22 +97,22 @@ void DrawClock(int currentHour, int currentMinute)
 
     int totalWidth = hourWidth + colonWidth + minuteWidth;
 
-    int startX = (800 - totalWidth) / 2;
-    int startY = 80;
+    int startX = 640;
+    int startY = 10;
 
     // Stunde
-    DrawText(hourText, startX -10, startY, fontSize, WHITE);
+    DrawText(hourText, startX -10, startY, fontSize, BLACK);
 
     // Doppelpunkt
     bool showColon = ((int)GetTime() % 2 == 0);
 
     if (showColon)
     {
-        DrawText(":", startX + hourWidth, startY, fontSize, WHITE);
+        DrawText(":", startX + hourWidth, startY, fontSize, BLACK);
     }
 
     // Minuten
-    DrawText(minuteText, startX + 10 + hourWidth + colonWidth, startY, fontSize, WHITE);
+    DrawText(minuteText, startX + 10 + hourWidth + colonWidth, startY, fontSize, BLACK);
 }
 
 void DrawHomeButton(Graphics graphics){
@@ -130,7 +130,9 @@ void UnloadGraphics(Graphics& graphics)
     UnloadTexture(graphics.forrest_morning);
     UnloadTexture(graphics.forrest_daylight);
     UnloadTexture(graphics.forrest_night);
+    UnloadTexture(graphics.vulcan_morning);
     UnloadTexture(graphics.vulcan_daylight);
+    UnloadTexture(graphics.vulcan_night);
     UnloadTexture(graphics.homeButton);
     UnloadTexture(graphics.icon_beach);
     UnloadTexture(graphics.icon_forrest);

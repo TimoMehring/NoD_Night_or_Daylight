@@ -56,7 +56,7 @@ int main(void)
         BeginDrawing();
 
         ClearBackground(GREEN);
-        PlayAudio(audio,currentDayTime);
+        PlayAudio(audio,currentDayTime,currentState);
         DrawGraphics(graphics, currentDayTime,currentState);
         if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
             DrawClock(currentHour, currentMinute);

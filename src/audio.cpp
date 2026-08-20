@@ -9,7 +9,7 @@ Audio LoadAudio(){
     return audio;
 }
 
-void PlayAudio(Audio& audio, Daytime currentDayTime){
+void PlayAudio(Audio& audio, Daytime currentDayTime,State currentState){
     if(currentDayTime == Daytime::Morning || currentDayTime == Daytime::Daylight){
         StopMusicStream(audio.nightwater);
         if(!IsMusicStreamPlaying(audio.birds)){
@@ -22,6 +22,16 @@ void PlayAudio(Audio& audio, Daytime currentDayTime){
             PlayMusicStream(audio.nightwater);
         }
         UpdateMusicStream(audio.nightwater);
+
+    }
+    if(currentState == State::ThemeVulcan){
+        StopMusicStream(audio.nightwater);
+        StopMusicStream(audio.birds);
+        if(!IsMusicStreamPlaying(audio.vulcan)){
+            PlayMusicStream(audio.vulcan);
+        }
+        UpdateMusicStream(audio.vulcan);
+
 
     }
 }

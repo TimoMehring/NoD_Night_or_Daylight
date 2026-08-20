@@ -10,5 +10,5 @@ struct Audio{
 };
 
 Audio LoadAudio();
-void PlayAudio(Audio& audio, Daytime currentDayTime);
+void PlayAudio(Audio& audio, Daytime currentDayTime,State currentState);
 void UnlaodAudio(Audio& audio);
