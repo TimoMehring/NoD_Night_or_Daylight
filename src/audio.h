@@ -1,10 +1,12 @@
 #pragma once
 #include "raylib.h"
 #include "daytime.h"
+#include "state.h"
 
 struct Audio{
     Music birds;
     Music nightwater;
+    Music vulcan;
 };
 
 Audio LoadAudio();

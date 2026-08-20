@@ -5,6 +5,7 @@ Audio LoadAudio(){
     Audio audio;
     audio.birds = LoadMusicStream("assets/birdswater.wav");
     audio.nightwater = LoadMusicStream("assets/nightwater.wav");
+    audio.vulcan = LoadMusicStream("assets/vulcan_sound.wav");
     return audio;
 }
 
@@ -28,4 +29,5 @@ void PlayAudio(Audio& audio, Daytime currentDayTime){
 void UnlaodAudio(Audio& audio){
     UnloadMusicStream(audio.birds);
     UnloadMusicStream(audio.nightwater);
+    UnloadMusicStream(audio.vulcan);
 }

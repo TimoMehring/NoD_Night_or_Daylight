@@ -29,6 +29,8 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
 
     if(currentState == State::Startscreen){
         DrawTextureEx(graphics.startscreen,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+        DrawText("NoD",345, 25, 60, BLACK);
+        DrawText("Night or Daylight",150, 90, 60, BLACK);
         return;
     }
 
@@ -177,6 +179,7 @@ void DrawThemeChoiceExtras(Graphics graphics){
     DrawTextureEx(graphics.icon_beach,{20.0f,100.0f},0.0,7.0,WHITE);
     DrawTextureEx(graphics.icon_forrest,{281.0f,100.0f},0.0f,7.0,WHITE);
     DrawTextureEx(graphics.icon_vulcan,{542.0f,100.0f},0.0,7.0,WHITE);
+    DrawText("Choose your Theme",150, 25, 50, BLACK);
 }
 
 void DrawThemeChoiceAnimation(Graphics  graphics, int currentThemeChoiceFrame){
