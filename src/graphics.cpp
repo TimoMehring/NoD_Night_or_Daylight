@@ -5,6 +5,7 @@ Graphics LoadGraphics(){
     Graphics graphics;
     graphics.startscreen = LoadTexture("assets/startscreen.png");
     graphics.themechoice = LoadTexture("assets/themechoice.png");
+    graphics.themechoice_spritesheet = LoadTexture("assets/themechoice_spritesheet.png");
     graphics.morning = LoadTexture("assets/morning.png");
     graphics.daylight = LoadTexture("assets/daylight.png");
     graphics.night = LoadTexture("assets/night.png");
@@ -120,6 +121,7 @@ void UnloadGraphics(Graphics& graphics)
 {
     UnloadTexture(graphics.startscreen);
     UnloadTexture(graphics.themechoice);
+    UnloadTexture(graphics.themechoice_spritesheet);
     UnloadTexture(graphics.morning);
     UnloadTexture(graphics.daylight);
     UnloadTexture(graphics.night);
@@ -175,4 +177,11 @@ void DrawThemeChoiceExtras(Graphics graphics){
     DrawTextureEx(graphics.icon_beach,{20.0f,100.0f},0.0,7.0,WHITE);
     DrawTextureEx(graphics.icon_forrest,{281.0f,100.0f},0.0f,7.0,WHITE);
     DrawTextureEx(graphics.icon_vulcan,{542.0f,100.0f},0.0,7.0,WHITE);
+}
+
+void DrawThemeChoiceAnimation(Graphics  graphics, int currentThemeChoiceFrame){
+    Rectangle source{currentThemeChoiceFrame * 100.0f ,0.0f, 100.0f, 50.0f};
+    Rectangle dest{0.0f,0.0f, 800.0f, 400.0f};
+    DrawTexturePro(graphics.themechoice_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
+    
 }

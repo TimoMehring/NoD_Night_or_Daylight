@@ -8,6 +8,7 @@ struct Graphics
 {
     Texture2D startscreen;
     Texture2D themechoice;
+    Texture2D themechoice_spritesheet;
 
     Texture2D morning;
     Texture2D daylight;
@@ -37,3 +38,4 @@ void UpdateHomeButton(Graphics graphics,State& currentState);
 void UpdateStartscreen(State& currentState);
 void UpdateThemeChoice(Graphics graphics, State& currentState);
 void DrawThemeChoiceExtras(Graphics graphics);
+void DrawThemeChoiceAnimation(Graphics  graphics, int currentThemeChoiceFrame);

@@ -15,7 +15,9 @@ int main(void)
     Image icon = LoadImage("assets/nod_icon_exe.png");
     SetWindowIcon(icon);
 
-    SetTargetFPS(60);      
+    SetTargetFPS(60);  
+    int currentThemeChoiceFrame = 0;  
+    float themeChoiceTimer = 0.0f;
     Daytime currentDayTime =  Daytime::Night;
     Graphics graphics = LoadGraphics();
     State currentState = State::Startscreen;
@@ -35,6 +37,15 @@ int main(void)
             UpdateStartscreen(currentState);
         }
         else if(currentState == State::ThemeChoice){
+            themeChoiceTimer += GetFrameTime();
+
+            if(themeChoiceTimer >= 0.85){
+                currentThemeChoiceFrame++;
+                if(currentThemeChoiceFrame >= 8){
+                    currentThemeChoiceFrame = 0;
+                }
+                themeChoiceTimer = 0.0f;
+            }
             UpdateThemeChoice(graphics, currentState);
         }
         else if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
@@ -54,6 +65,7 @@ int main(void)
         //DrawHomeButton(graphics);
 
         if(currentState == State::ThemeChoice){
+            DrawThemeChoiceAnimation(graphics,currentThemeChoiceFrame);
             DrawThemeChoiceExtras(graphics);
         }
         if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
