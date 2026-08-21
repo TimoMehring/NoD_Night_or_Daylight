@@ -35,6 +35,13 @@ struct Graphics
     Texture2D vulcan_daylight__object_spritesheet;
     Texture2D vulcan_night_spritesheet;
     Texture2D vulcan_night_object_spritesheet;
+
+    Texture2D beach_morning_spritesheet;
+    Texture2D beach_morning_object_spritesheet;
+    Texture2D beach_daylight_spritesheet;
+    Texture2D beach_daylight_object_spritesheet;
+    Texture2D beach_night_spritesheet;
+    Texture2D beach_night_object_spritesheet;
 };
 
 Graphics LoadGraphics();

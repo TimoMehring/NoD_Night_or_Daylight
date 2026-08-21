@@ -68,7 +68,7 @@ int main(void)
             }
             UpdateThemeChoice(graphics, currentState,audio);
         }
-        else if(currentState == State::ThemeVulcan){
+        else if(currentState == State::ThemeBeach || currentState == State::ThemeVulcan){
             allThemesTimer += GetFrameTime();
             if(allThemesTimer >= 0.6){
                 currentThemeFrame++;
@@ -88,6 +88,7 @@ int main(void)
             UpdateHomeButton(graphics,currentState,audio);
         }
         else if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
+
             UpdateHomeButton(graphics,currentState,audio);
         }
         //currentDayTime = Daytime::Night; //for testings
