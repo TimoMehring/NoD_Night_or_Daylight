@@ -7,23 +7,9 @@
 
 struct Graphics
 {
-    Texture2D startscreen;
     Texture2D startscreen_spritesheet;
     Texture2D startscreen_objects_spritesheet;
-    Texture2D themechoice;
     Texture2D themechoice_spritesheet;
-
-    Texture2D morning;
-    Texture2D daylight;
-    Texture2D night;
-
-    Texture2D forrest_morning;
-    Texture2D forrest_daylight;
-    Texture2D forrest_night;
-
-    Texture2D vulcan_morning;
-    Texture2D vulcan_daylight;
-    Texture2D vulcan_night;
 
     Texture2D homeButton;
 

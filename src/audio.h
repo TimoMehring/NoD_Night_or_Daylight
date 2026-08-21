@@ -7,6 +7,7 @@ struct Audio{
     Music birds;
     Music nightwater;
     Music vulcan;
+    Music forrest;
     Music startscreen;
     Sound button;
 };

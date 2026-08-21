@@ -91,7 +91,7 @@ int main(void)
 
             UpdateHomeButton(graphics,currentState,audio);
         }
-        currentDayTime = Daytime::Night; //for testings
+        //currentDayTime = Daytime::Night; //for testings
         //currentState = State::ThemeChoice; // for testings
         BeginDrawing();
 

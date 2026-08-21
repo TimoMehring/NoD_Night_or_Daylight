@@ -3,21 +3,9 @@
 
 Graphics LoadGraphics(){
     Graphics graphics;
-    graphics.startscreen = LoadTexture("assets/startscreen.png");
     graphics.startscreen_spritesheet = LoadTexture("assets/startscreen_spritesheet.png");
     graphics.startscreen_objects_spritesheet = LoadTexture("assets/startscreen_objects_spritesheet.png");
-    graphics.themechoice = LoadTexture("assets/themechoice.png");
     graphics.themechoice_spritesheet = LoadTexture("assets/themechoice_spritesheet.png");
-    graphics.morning = LoadTexture("assets/morning.png");
-    graphics.daylight = LoadTexture("assets/daylight.png");
-    graphics.night = LoadTexture("assets/night.png");
-    graphics.forrest_morning = LoadTexture("assets/forrest_morning.png");
-    graphics.forrest_daylight = LoadTexture("assets/forrest_daylight.png");
-    graphics.forrest_night = LoadTexture("assets/forrest_night.png");
-    graphics.vulcan_morning = LoadTexture("assets/vulcan_morning.png");
-    graphics.vulcan_daylight = LoadTexture("assets/vulcan_daylight.png");
-    graphics.vulcan_night = LoadTexture("assets/vulcan_night.png");
-    graphics.icon_vulcan = LoadTexture("assets/icon_vulcan.png");
 
     graphics.vulcan_morning_object_spritesheet = LoadTexture("assets/vulcan_morning_object_spritesheet.png");
     graphics.vulcan_daylight__object_spritesheet = LoadTexture("assets/vulcan_daylight_object_spritesheet.png");
@@ -38,7 +26,8 @@ Graphics LoadGraphics(){
 
 
     graphics.homeButton = LoadTexture("assets/homebutton.png");
-    
+
+    graphics.icon_vulcan = LoadTexture("assets/icon_vulcan.png");
     graphics.icon_beach = LoadTexture("assets/icon_beach.png");
     graphics.icon_forrest = LoadTexture("assets/icon_forrest.png");
     return graphics; 
@@ -46,7 +35,6 @@ Graphics LoadGraphics(){
 
 void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,int currentFrameStartscreen, int currentFrameObjects, int currentThemeFrame, int currentObjektFrame)
 {
-    //ClearBackground(GRAY);
 
     if(currentState == State::Startscreen){
 
@@ -61,11 +49,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
         return;
     }
 
-    if(currentState == State::ThemeChoice){
-        DrawTextureEx(graphics.themechoice,{0.0f, 0.0f},0.0f,8.0f,WHITE);
-        return;
-    }
-
     if (currentDayTime == Daytime::Morning)
     {
         if(currentState == State::ThemeBeach){
@@ -74,7 +57,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTexturePro(graphics.beach_morning_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.beach_morning_object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeForrest){
             Rectangle source{currentThemeFrame * 100.0f ,0.0f, 100.0f, 50.0f};
@@ -82,7 +64,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.forrest_morning__object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             DrawTexturePro(graphics.forrest_morning_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.forrest_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeVulcan){
             Rectangle source{currentObjektFrame * 100.0f ,0.0f, 100.0f, 50.0f};
@@ -90,7 +71,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTexturePro(graphics.vulcan_night_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.vulcan_morning_object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.vulcan_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
 
     }
@@ -102,7 +82,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTexturePro(graphics.beach_daylight_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.beach_daylight_object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeForrest){
             Rectangle source{currentThemeFrame * 100.0f ,0.0f, 100.0f, 50.0f};
@@ -110,7 +89,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.forrest_morning__object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             DrawTexturePro(graphics.forrest_daylight_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.forrest_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeVulcan){
             Rectangle source{currentThemeFrame * 100.0f ,0.0f, 100.0f, 50.0f};
@@ -118,7 +96,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTexturePro(graphics.vulcan_night_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.vulcan_daylight__object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.vulcan_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
     }
     else if (currentDayTime == Daytime::Night)
@@ -129,7 +106,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTexturePro(graphics.beach_night_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.beach_night_object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeForrest){
             Rectangle source{currentThemeFrame * 100.0f ,0.0f, 100.0f, 50.0f};
@@ -137,7 +113,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.forrest_morning__object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             DrawTexturePro(graphics.forrest_night_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.forrest_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeVulcan){
             Rectangle source{currentThemeFrame * 100.0f ,0.0f, 100.0f, 50.0f};
@@ -145,7 +120,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTexturePro(graphics.vulcan_night_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
             Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
             DrawTexturePro(graphics.vulcan_night_object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
-            //DrawTextureEx(graphics.vulcan_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         
     }
@@ -201,21 +175,13 @@ void DrawHomeButton(Graphics graphics){
 
 void UnloadGraphics(Graphics& graphics)
 {
-    UnloadTexture(graphics.startscreen);
+
     UnloadTexture(graphics.startscreen_spritesheet);
     UnloadTexture(graphics.startscreen_objects_spritesheet);
-    UnloadTexture(graphics.themechoice);
     UnloadTexture(graphics.themechoice_spritesheet);
-    UnloadTexture(graphics.morning);
-    UnloadTexture(graphics.daylight);
-    UnloadTexture(graphics.night);
-    UnloadTexture(graphics.forrest_morning);
-    UnloadTexture(graphics.forrest_daylight);
-    UnloadTexture(graphics.forrest_night);
-    UnloadTexture(graphics.vulcan_morning);
-    UnloadTexture(graphics.vulcan_daylight);
-    UnloadTexture(graphics.vulcan_night);
+    
     UnloadTexture(graphics.homeButton);
+
     UnloadTexture(graphics.icon_beach);
     UnloadTexture(graphics.icon_forrest);
     UnloadTexture(graphics.icon_vulcan);
