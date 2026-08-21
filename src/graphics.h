@@ -9,6 +9,7 @@ struct Graphics
 {
     Texture2D startscreen;
     Texture2D startscreen_spritesheet;
+    Texture2D startscreen_objects_spritesheet;
     Texture2D themechoice;
     Texture2D themechoice_spritesheet;
 
@@ -32,7 +33,7 @@ struct Graphics
 };
 
 Graphics LoadGraphics();
-void DrawGraphics(Graphics graphics, Daytime currentDayTime, State& currentState, int currentFrameStartscreen);
+void DrawGraphics(Graphics graphics, Daytime currentDayTime, State& currentState, int currentFrameStartscreen,int currentFrameObjects);
 void UnloadGraphics(Graphics& graphics);
 void DrawClock(int currentHour, int currentMinute);
 void DrawHomeButton(Graphics graphics);
