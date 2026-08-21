@@ -19,6 +19,9 @@ Graphics LoadGraphics(){
     graphics.vulcan_night = LoadTexture("assets/vulcan_night.png");
     graphics.icon_vulcan = LoadTexture("assets/icon_vulcan.png");
 
+    graphics.vulcan_night_spritesheet = LoadTexture("assets/vulcan_night_spritesheet.png");
+    graphics.vulcan_night_object_spritesheet = LoadTexture("assets/vulcan_night_object_spritesheet.png");
+
 
     graphics.homeButton = LoadTexture("assets/homebutton.png");
     
@@ -27,7 +30,7 @@ Graphics LoadGraphics(){
     return graphics; 
 }
 
-void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,int currentFrameStartscreen, int currentFrameObjects)
+void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,int currentFrameStartscreen, int currentFrameObjects, int currentThemeFrame, int currentObjektFrame)
 {
     //ClearBackground(GRAY);
 
@@ -39,7 +42,6 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
 
         Rectangle sourceObjects{currentFrameObjects*100.0f, 0.0f, 100.0f, 50.0f};
         DrawTexturePro(graphics.startscreen_objects_spritesheet, sourceObjects, dest, {0.0f, 0.0f}, 0.0f, WHITE);
-        //DrawTextureEx(graphics.startscreen,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         DrawText("NoD",345, 25, 60, BLACK);
         DrawText("Night or Daylight",150, 90, 60, BLACK);
         return;
@@ -84,13 +86,18 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTextureEx(graphics.forrest_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeVulcan){
-            DrawTextureEx(graphics.vulcan_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+            Rectangle source{currentThemeFrame * 100.0f ,0.0f, 100.0f, 50.0f};
+            Rectangle dest{0.0f,0.0f, 800.0f, 400.0f};
+            DrawTexturePro(graphics.vulcan_night_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
+            Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
+            DrawTexturePro(graphics.vulcan_night_object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
+            //DrawTextureEx(graphics.vulcan_night,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         
     }
 }
 
-void DrawClock(int currentHour, int currentMinute)
+void DrawClock(int currentHour, int currentMinute, State currentState)
 {
     const int fontSize = 60;
 
@@ -109,19 +116,29 @@ void DrawClock(int currentHour, int currentMinute)
     int startX = 640;
     int startY = 10;
 
-    // Stunde
-    DrawText(hourText, startX -10, startY, fontSize, BLACK);
-
-    // Doppelpunkt
-    bool showColon = ((int)GetTime() % 2 == 0);
-
-    if (showColon)
-    {
-        DrawText(":", startX + hourWidth, startY, fontSize, BLACK);
+    if(currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
+        DrawText(hourText, startX -10, startY, fontSize, BLACK);
+        bool showColon = ((int)GetTime() % 2 == 0);
+        if (showColon){
+            DrawText(":", startX + hourWidth, startY, fontSize, BLACK);
+        }
+        DrawText(minuteText, startX + 10 + hourWidth + colonWidth, startY, fontSize, BLACK);
+        DrawText(minuteText, startX + 10 + hourWidth + colonWidth, startY, fontSize, BLACK);
     }
+    else if(currentState == State::ThemeBeach){
+        DrawText(hourText, startX -10, startY, fontSize, WHITE);
+        bool showColon = ((int)GetTime() % 2 == 0);
+        if (showColon){
+             DrawText(":", startX + hourWidth, startY, fontSize, WHITE);
+        }
+         DrawText(minuteText, startX + 10 + hourWidth + colonWidth, startY, fontSize, WHITE);
+         DrawText(minuteText, startX + 10 + hourWidth + colonWidth, startY, fontSize, WHITE);
+    }
+    
 
-    // Minuten
-    DrawText(minuteText, startX + 10 + hourWidth + colonWidth, startY, fontSize, BLACK);
+
+
+
 }
 
 void DrawHomeButton(Graphics graphics){
@@ -148,6 +165,9 @@ void UnloadGraphics(Graphics& graphics)
     UnloadTexture(graphics.icon_beach);
     UnloadTexture(graphics.icon_forrest);
     UnloadTexture(graphics.icon_vulcan);
+
+    UnloadTexture(graphics.vulcan_night_spritesheet);
+    UnloadTexture(graphics.vulcan_night_object_spritesheet);
 }
 
 void UpdateHomeButton(Graphics graphics,State& currentState,Audio& audio){

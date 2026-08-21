@@ -30,12 +30,15 @@ struct Graphics
     Texture2D icon_beach;
     Texture2D icon_forrest;
     Texture2D icon_vulcan;
+
+    Texture2D vulcan_night_spritesheet;
+    Texture2D vulcan_night_object_spritesheet;
 };
 
 Graphics LoadGraphics();
-void DrawGraphics(Graphics graphics, Daytime currentDayTime, State& currentState, int currentFrameStartscreen,int currentFrameObjects);
+void DrawGraphics(Graphics graphics, Daytime currentDayTime, State& currentState, int currentFrameStartscreen,int currentFrameObjects,int currentThemeFrame,int currentObjektFrame);
 void UnloadGraphics(Graphics& graphics);
-void DrawClock(int currentHour, int currentMinute);
+void DrawClock(int currentHour, int currentMinute,State currentState);
 void DrawHomeButton(Graphics graphics);
 void UpdateHomeButton(Graphics graphics,State& currentState,Audio& audio);
 void UpdateStartscreen(State& currentState,Audio& audio);

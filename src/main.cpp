@@ -19,18 +19,18 @@ int main(void)
     int currentThemeChoiceFrame = 0;  
     int currentFrameStartscreen = 0;
     int currentFrameObjects = 0;
+    int currentThemeFrame = 0;
+    int currentObjektFrame = 0;
     float themeChoiceTimer = 0.0f;
     float objectsTimer = 0.0f;
+    float allThemesTimer = 0.0f;
     Daytime currentDayTime =  Daytime::Night;
     Graphics graphics = LoadGraphics();
     State currentState = State::Startscreen;
 
     Audio audio = LoadAudio();
 
-    while (!WindowShouldClose())    {  
-/*         if((currentState == State::ThemeBeach) || (currentState == State::ThemeForrest)){
-            
-        } */
+    while (!WindowShouldClose()){  
         int currentHour = GetCurrentHour();
         int currentMinute = GetCurrentMinute();
         currentDayTime = CheckDayTime(currentHour); 
@@ -68,21 +68,38 @@ int main(void)
             }
             UpdateThemeChoice(graphics, currentState,audio);
         }
+        else if(currentState == State::ThemeVulcan){
+            allThemesTimer += GetFrameTime();
+            if(allThemesTimer >= 0.6){
+                currentThemeFrame++;
+                if(currentThemeFrame >= 4){
+                    currentThemeFrame = 0;
+                }
+                allThemesTimer = 0.0f;
+            }
+            objectsTimer += GetFrameTime();
+            if(objectsTimer >= 0.9){
+                currentObjektFrame++;
+                if(currentObjektFrame >= 4){
+                    currentObjektFrame = 0;
+                }
+                objectsTimer = 0.0f;
+            }
+            UpdateHomeButton(graphics,currentState,audio);
+        }
         else if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
             UpdateHomeButton(graphics,currentState,audio);
         }
-        //currentDayTime = Daytime::Morning; //for testings
+        //currentDayTime = Daytime::Daylight; //for testings
         //currentState = State::ThemeChoice; // for testings
         BeginDrawing();
 
         ClearBackground(GREEN);
         PlayAudio(audio,currentDayTime,currentState);
-        DrawGraphics(graphics, currentDayTime,currentState,currentFrameStartscreen,currentFrameObjects);
+        DrawGraphics(graphics, currentDayTime,currentState,currentFrameStartscreen,currentFrameObjects, currentThemeFrame,currentObjektFrame);
         if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
-            DrawClock(currentHour, currentMinute);
-        }
-        //DrawClock(currentHour, currentMinute);
-        //DrawHomeButton(graphics);
+            DrawClock(currentHour, currentMinute, currentState);
+        };
 
         if(currentState == State::ThemeChoice){
             DrawThemeChoiceAnimation(graphics,currentThemeChoiceFrame);
