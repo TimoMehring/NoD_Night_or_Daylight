@@ -42,6 +42,11 @@ struct Graphics
     Texture2D beach_daylight_object_spritesheet;
     Texture2D beach_night_spritesheet;
     Texture2D beach_night_object_spritesheet;
+
+    Texture2D forrest_morning_spritesheet;
+    Texture2D forrest_morning__object_spritesheet;
+    Texture2D forrest_daylight_spritesheet;
+    Texture2D forrest_night_spritesheet;
 };
 
 Graphics LoadGraphics();

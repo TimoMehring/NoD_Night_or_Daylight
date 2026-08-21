@@ -68,7 +68,7 @@ int main(void)
             }
             UpdateThemeChoice(graphics, currentState,audio);
         }
-        else if(currentState == State::ThemeBeach || currentState == State::ThemeVulcan){
+        else if(currentState == State::ThemeBeach || currentState == State::ThemeVulcan || currentState == State::ThemeForrest){
             allThemesTimer += GetFrameTime();
             if(allThemesTimer >= 0.6){
                 currentThemeFrame++;
@@ -91,7 +91,7 @@ int main(void)
 
             UpdateHomeButton(graphics,currentState,audio);
         }
-        //currentDayTime = Daytime::Night; //for testings
+        currentDayTime = Daytime::Night; //for testings
         //currentState = State::ThemeChoice; // for testings
         BeginDrawing();
 
