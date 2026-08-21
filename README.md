@@ -15,7 +15,11 @@ and audio based on the current local PC time and choosen Theme.
 
 ## Preview
 
+### Startscreen
 ![NoD Preview](media/NoD_Preview.gif)
+
+### Theme
+![NoD Preview 2](media/NoD_Preview2.gif)
 
 ## Version 2.0
 
