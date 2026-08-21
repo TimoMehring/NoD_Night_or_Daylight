@@ -19,6 +19,8 @@ Graphics LoadGraphics(){
     graphics.vulcan_night = LoadTexture("assets/vulcan_night.png");
     graphics.icon_vulcan = LoadTexture("assets/icon_vulcan.png");
 
+    graphics.vulcan_morning_object_spritesheet = LoadTexture("assets/vulcan_morning_object_spritesheet.png");
+    graphics.vulcan_daylight__object_spritesheet = LoadTexture("assets/vulcan_daylight_object_spritesheet.png");
     graphics.vulcan_night_spritesheet = LoadTexture("assets/vulcan_night_spritesheet.png");
     graphics.vulcan_night_object_spritesheet = LoadTexture("assets/vulcan_night_object_spritesheet.png");
 
@@ -61,7 +63,12 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTextureEx(graphics.forrest_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeVulcan){
-            DrawTextureEx(graphics.vulcan_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+            Rectangle source{currentObjektFrame * 100.0f ,0.0f, 100.0f, 50.0f};
+            Rectangle dest{0.0f,0.0f, 800.0f, 400.0f};
+            DrawTexturePro(graphics.vulcan_night_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
+            Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
+            DrawTexturePro(graphics.vulcan_morning_object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
+            //DrawTextureEx(graphics.vulcan_morning,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
 
     }
@@ -74,7 +81,12 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,
             DrawTextureEx(graphics.forrest_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
         else if(currentState == State::ThemeVulcan){
-            DrawTextureEx(graphics.vulcan_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+            Rectangle source{currentThemeFrame * 100.0f ,0.0f, 100.0f, 50.0f};
+            Rectangle dest{0.0f,0.0f, 800.0f, 400.0f};
+            DrawTexturePro(graphics.vulcan_night_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
+            Rectangle sourceObjects{currentObjektFrame*100.0f, 0.0f, 100.0f, 50.0f};
+            DrawTexturePro(graphics.vulcan_daylight__object_spritesheet, sourceObjects, dest,{0.0f, 0.0f}, 0.0f, WHITE);
+            //DrawTextureEx(graphics.vulcan_daylight,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         }
     }
     else if (currentDayTime == Daytime::Night)
@@ -166,6 +178,8 @@ void UnloadGraphics(Graphics& graphics)
     UnloadTexture(graphics.icon_forrest);
     UnloadTexture(graphics.icon_vulcan);
 
+    UnloadTexture(graphics.vulcan_morning_object_spritesheet);
+    UnloadTexture(graphics.vulcan_daylight__object_spritesheet);
     UnloadTexture(graphics.vulcan_night_spritesheet);
     UnloadTexture(graphics.vulcan_night_object_spritesheet);
 }

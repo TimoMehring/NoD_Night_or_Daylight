@@ -90,7 +90,7 @@ int main(void)
         else if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
             UpdateHomeButton(graphics,currentState,audio);
         }
-        //currentDayTime = Daytime::Daylight; //for testings
+        //currentDayTime = Daytime::Night; //for testings
         //currentState = State::ThemeChoice; // for testings
         BeginDrawing();
 

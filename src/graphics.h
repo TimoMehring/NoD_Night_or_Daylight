@@ -31,6 +31,8 @@ struct Graphics
     Texture2D icon_forrest;
     Texture2D icon_vulcan;
 
+    Texture2D vulcan_morning_object_spritesheet;
+    Texture2D vulcan_daylight__object_spritesheet;
     Texture2D vulcan_night_spritesheet;
     Texture2D vulcan_night_object_spritesheet;
 };
