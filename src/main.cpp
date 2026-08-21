@@ -17,6 +17,7 @@ int main(void)
 
     SetTargetFPS(60);  
     int currentThemeChoiceFrame = 0;  
+    int currentFrameStartscreen = 0;
     float themeChoiceTimer = 0.0f;
     Daytime currentDayTime =  Daytime::Night;
     Graphics graphics = LoadGraphics();
@@ -34,6 +35,14 @@ int main(void)
         
 
         if(currentState == State::Startscreen){
+            themeChoiceTimer += GetFrameTime();
+            if(themeChoiceTimer >= 0.6){
+                currentFrameStartscreen++;
+                if(currentFrameStartscreen >= 4){
+                    currentFrameStartscreen = 0;
+                }
+                themeChoiceTimer = 0.0f;
+            }
             UpdateStartscreen(currentState,audio);
         }
         else if(currentState == State::ThemeChoice){
@@ -57,7 +66,7 @@ int main(void)
 
         ClearBackground(GREEN);
         PlayAudio(audio,currentDayTime,currentState);
-        DrawGraphics(graphics, currentDayTime,currentState);
+        DrawGraphics(graphics, currentDayTime,currentState,currentFrameStartscreen);
         if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
             DrawClock(currentHour, currentMinute);
         }

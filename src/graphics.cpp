@@ -4,6 +4,7 @@
 Graphics LoadGraphics(){
     Graphics graphics;
     graphics.startscreen = LoadTexture("assets/startscreen.png");
+    graphics.startscreen_spritesheet = LoadTexture("assets/startscreen_spritesheet.png");
     graphics.themechoice = LoadTexture("assets/themechoice.png");
     graphics.themechoice_spritesheet = LoadTexture("assets/themechoice_spritesheet.png");
     graphics.morning = LoadTexture("assets/morning.png");
@@ -25,12 +26,17 @@ Graphics LoadGraphics(){
     return graphics; 
 }
 
-void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState)
+void DrawGraphics(Graphics graphics, Daytime currentDayTime,State& currentState,int currentFrameStartscreen)
 {
     //ClearBackground(GRAY);
 
     if(currentState == State::Startscreen){
-        DrawTextureEx(graphics.startscreen,{0.0f, 0.0f},0.0f,8.0f,WHITE);
+
+        Rectangle source{currentFrameStartscreen * 100.0f ,0.0f, 100.0f, 50.0f};
+        Rectangle dest{0.0f,0.0f, 800.0f, 400.0f};
+        DrawTexturePro(graphics.startscreen_spritesheet, source, dest,{0.0f, 0.0f}, 0.0f, WHITE);
+
+        //DrawTextureEx(graphics.startscreen,{0.0f, 0.0f},0.0f,8.0f,WHITE);
         DrawText("NoD",345, 25, 60, BLACK);
         DrawText("Night or Daylight",150, 90, 60, BLACK);
         return;
@@ -122,6 +128,7 @@ void DrawHomeButton(Graphics graphics){
 void UnloadGraphics(Graphics& graphics)
 {
     UnloadTexture(graphics.startscreen);
+    UnloadTexture(graphics.startscreen_spritesheet);
     UnloadTexture(graphics.themechoice);
     UnloadTexture(graphics.themechoice_spritesheet);
     UnloadTexture(graphics.morning);
