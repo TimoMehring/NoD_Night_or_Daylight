@@ -3,6 +3,7 @@
 #include "daytime.h"
 #include <cstdio>
 #include "state.h"
+#include "audio.h"
 
 struct Graphics
 {
@@ -34,8 +35,8 @@ void DrawGraphics(Graphics graphics, Daytime currentDayTime, State& currentState
 void UnloadGraphics(Graphics& graphics);
 void DrawClock(int currentHour, int currentMinute);
 void DrawHomeButton(Graphics graphics);
-void UpdateHomeButton(Graphics graphics,State& currentState);
-void UpdateStartscreen(State& currentState);
-void UpdateThemeChoice(Graphics graphics, State& currentState);
+void UpdateHomeButton(Graphics graphics,State& currentState,Audio& audio);
+void UpdateStartscreen(State& currentState,Audio& audio);
+void UpdateThemeChoice(Graphics graphics, State& currentState,Audio& audio);
 void DrawThemeChoiceExtras(Graphics graphics);
 void DrawThemeChoiceAnimation(Graphics  graphics, int currentThemeChoiceFrame);

@@ -139,12 +139,13 @@ void UnloadGraphics(Graphics& graphics)
     UnloadTexture(graphics.icon_vulcan);
 }
 
-void UpdateHomeButton(Graphics graphics,State& currentState){
+void UpdateHomeButton(Graphics graphics,State& currentState,Audio& audio){
     Rectangle homeButton = {20.0, 10.0, static_cast<float>(graphics.homeButton.width)*5,static_cast<float>(graphics.homeButton.height)*5};
     
     Vector2 mousePosition = GetMousePosition();
     
     if(CheckCollisionPointRec(mousePosition,homeButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        PlaySound(audio.button);
         
         currentState = State::Startscreen;
 
@@ -152,25 +153,29 @@ void UpdateHomeButton(Graphics graphics,State& currentState){
     }
 }
 
-void UpdateStartscreen(State& currentState){
+void UpdateStartscreen(State& currentState,Audio& audio){
     if(IsKeyPressed(KEY_ENTER) || IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+        PlaySound(audio.button);
         currentState = State::ThemeChoice;
     }
 }
 
-void UpdateThemeChoice(Graphics graphics, State& currentState){
+void UpdateThemeChoice(Graphics graphics, State& currentState,Audio& audio){
     Rectangle beachButton = {20.0, 100.0, static_cast<float>(graphics.icon_beach.width)*7,static_cast<float>(graphics.icon_beach.height)*7};
     Rectangle forrestButton = {281.0, 100.0, static_cast<float>(graphics.icon_forrest.width)*7,static_cast<float>(graphics.icon_forrest.height)*7};
     Rectangle vulcanButton = {542.0, 100.0, static_cast<float>(graphics.icon_vulcan.width)*7,static_cast<float>(graphics.icon_vulcan.height)*7};
     Vector2 mousePosition = GetMousePosition();
 
     if(CheckCollisionPointRec(mousePosition,beachButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        PlaySound(audio.button);
         currentState = State::ThemeBeach;
     }
     else if(CheckCollisionPointRec(mousePosition,forrestButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        PlaySound(audio.button);
         currentState = State::ThemeForrest;
     }
     else if(CheckCollisionPointRec(mousePosition,vulcanButton) && (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))){
+        PlaySound(audio.button);
         currentState = State::ThemeVulcan;
     }
 

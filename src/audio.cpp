@@ -7,6 +7,7 @@ Audio LoadAudio(){
     audio.nightwater = LoadMusicStream("assets/nightwater.wav");
     audio.vulcan = LoadMusicStream("assets/vulcan_sound.wav");
     audio.startscreen = LoadMusicStream("assets/startscreen_song.wav");
+    audio.button = LoadSound("assets/button_sound.wav");
     return audio;
 }
 
@@ -61,4 +62,5 @@ void UnlaodAudio(Audio& audio){
     UnloadMusicStream(audio.nightwater);
     UnloadMusicStream(audio.vulcan);
     UnloadMusicStream(audio.startscreen);
+    UnloadSound(audio.button);
 }

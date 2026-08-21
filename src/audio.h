@@ -8,6 +8,7 @@ struct Audio{
     Music nightwater;
     Music vulcan;
     Music startscreen;
+    Sound button;
 };
 
 Audio LoadAudio();

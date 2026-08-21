@@ -34,7 +34,7 @@ int main(void)
         
 
         if(currentState == State::Startscreen){
-            UpdateStartscreen(currentState);
+            UpdateStartscreen(currentState,audio);
         }
         else if(currentState == State::ThemeChoice){
             themeChoiceTimer += GetFrameTime();
@@ -46,10 +46,10 @@ int main(void)
                 }
                 themeChoiceTimer = 0.0f;
             }
-            UpdateThemeChoice(graphics, currentState);
+            UpdateThemeChoice(graphics, currentState,audio);
         }
         else if(currentState == State::ThemeBeach || currentState == State::ThemeForrest || currentState == State::ThemeVulcan){
-            UpdateHomeButton(graphics,currentState);
+            UpdateHomeButton(graphics,currentState,audio);
         }
         //currentDayTime = Daytime::Morning; //for testings
         //currentState = State::ThemeChoice; // for testings
